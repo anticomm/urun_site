@@ -1,0 +1,16 @@
+import json
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+driver.get("https://site-adresi.com")  # Cookie’leri eklemeden önce bir sayfa açılmalı
+
+# JSON’dan cookie’leri oku
+with open("cookie.json", "r") as f:
+    cookies = json.load(f)
+
+# Cookie’leri tarayıcıya ekle
+for cookie in cookies:
+    driver.add_cookie(cookie)
+
+# Sayfayı yenile, artık oturum açık
+driver.refresh()
