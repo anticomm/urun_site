@@ -34,7 +34,7 @@ def validate_stream(url: str) -> bool:
         return False
 
 def main():
-    github_url = "https://raw.githubusercontent.com/iptv-org/iptv/master/index.m3u"
+    github_url = "https://iptv-org.github.io/iptv/index.m3u"
     m3u_text = fetch_m3u(github_url)
     channels = parse_m3u(m3u_text)
 
