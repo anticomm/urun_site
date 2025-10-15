@@ -33,15 +33,31 @@ def validate_stream(url: str) -> bool:
     except:
         return False
 
+def save_verified_m3u(channels: list, output_path: str = "playlist_verified.m3u"):
+    """Çalışan stream'leri M3U formatında dosyaya yazar"""
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write("#EXTM3U\n")
+        for ch in channels:
+            f.write(f"#EXTINF:-1,{ch['name']}\n")
+            f.write(f"{ch['url']}\n")
+
 def main():
     github_url = "https://iptv-org.github.io/iptv/index.m3u"
     m3u_text = fetch_m3u(github_url)
     channels = parse_m3u(m3u_text)
 
     print(f"{len(channels)} kanal bulundu.")
-    for ch in channels[:10]:  # İlk 10 kanalı test edelim
+    verified = []
+
+    for i, ch in enumerate(channels[:100]):  # İlk 100 kanalı test ediyoruz
         status = "✅" if validate_stream(ch["url"]) else "❌"
         print(f"{status} {ch['name']} → {ch['url']}")
+        if status == "✅":
+            verified.append(ch)
+
+    print(f"\n✅ {len(verified)} stream çalışıyor. Dosyaya yazılıyor...")
+    save_verified_m3u(verified)
+    print("📁 playlist_verified.m3u dosyası oluşturuldu.")
 
 if __name__ == "__main__":
     main()
