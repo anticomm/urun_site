@@ -21,8 +21,8 @@ blocked_channels = set(blocklist)
 channel_map = {c["id"]: c for c in channels}
 logo_map = {l["channel"]: l["url"] for l in logos}
 
-# M3U dosyasını oluştur
-with open("playlist.m3u", "w", encoding="utf-8") as f:
+# ✅ Doğrudan verified dosyasına yaz
+with open("playlist_verified.m3u", "w", encoding="utf-8") as f:
     f.write("#EXTM3U\n")
     for stream in streams:
         cid = stream["channel"]
@@ -38,4 +38,4 @@ with open("playlist.m3u", "w", encoding="utf-8") as f:
         extinf = f'#EXTINF:-1 tvg-logo="{logo}" group-title="{group}",{name}\n{url}\n'
         f.write(extinf)
 
-print("✅ playlist.m3u dosyası oluşturuldu.")
+print("✅ playlist_verified.m3u dosyası güncellendi.")
