@@ -1,63 +1,41 @@
 import requests
-import re
+import json
 
-def fetch_m3u(url: str) -> str:
-    """GitHub raw URL'den M3U dosyasını çeker"""
-    response = requests.get(url)
-    if response.status_code == 200:
-        return response.text
-    else:
-        raise Exception(f"M3U alınamadı: {response.status_code}")
+# Kaynaklar
+BASE_URL = "https://iptv-org.github.io/api"
+CHANNELS_URL = f"{BASE_URL}/channels.json"
+STREAMS_URL = f"{BASE_URL}/streams.json"
+LOGOS_URL = f"{BASE_URL}/logos.json"
+BLOCKLIST_URL = f"{BASE_URL}/blocklist.json"
 
-def parse_m3u(m3u_text: str) -> list:
-    """M3U içeriğini kanal adı ve stream URL olarak ayrıştırır"""
-    lines = m3u_text.splitlines()
-    channels = []
-    for i in range(len(lines)):
-        if lines[i].startswith("#EXTINF"):
-            name_match = re.search(r',(.+)', lines[i])
-            name = name_match.group(1).strip() if name_match else "Bilinmeyen"
-            stream_url = lines[i+1] if i+1 < len(lines) else None
-            if stream_url and stream_url.startswith("http"):
-                channels.append({
-                    "name": name,
-                    "url": stream_url
-                })
-    return channels
+# Verileri çek
+channels = requests.get(CHANNELS_URL).json()
+streams = requests.get(STREAMS_URL).json()
+logos = requests.get(LOGOS_URL).json()
+blocklist = requests.get(BLOCKLIST_URL).json()
 
-def validate_stream(url: str) -> bool:
-    """Stream URL çalışıyor mu diye kontrol eder"""
-    try:
-        response = requests.head(url, timeout=5)
-        return response.status_code == 200
-    except:
-        return False
+# Blocklist'e giren kanalları filtrele
+blocked_channels = set(blocklist)
 
-def save_verified_m3u(channels: list, output_path: str = "playlist_verified.m3u"):
-    """Çalışan stream'leri M3U formatında dosyaya yazar"""
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write("#EXTM3U\n")
-        for ch in channels:
-            f.write(f"#EXTINF:-1,{ch['name']}\n")
-            f.write(f"{ch['url']}\n")
+# Kanal ID → kanal adı eşlemesi
+channel_map = {c["id"]: c for c in channels}
+logo_map = {l["channel"]: l["url"] for l in logos}
 
-def main():
-    github_url = "https://iptv-org.github.io/iptv/index.m3u"
-    m3u_text = fetch_m3u(github_url)
-    channels = parse_m3u(m3u_text)
+# M3U dosyasını oluştur
+with open("playlist.m3u", "w", encoding="utf-8") as f:
+    f.write("#EXTM3U\n")
+    for stream in streams:
+        cid = stream["channel"]
+        if cid not in channel_map or cid in blocked_channels:
+            continue
 
-    print(f"{len(channels)} kanal bulundu.")
-    verified = []
+        channel = channel_map[cid]
+        name = stream.get("title") or channel.get("name") or "Unknown"
+        url = stream["url"]
+        logo = logo_map.get(cid, "")
+        group = channel.get("country", "Unknown")
 
-    for i, ch in enumerate(channels[:100]):  # İlk 100 kanalı test ediyoruz
-        status = "✅" if validate_stream(ch["url"]) else "❌"
-        print(f"{status} {ch['name']} → {ch['url']}")
-        if status == "✅":
-            verified.append(ch)
+        extinf = f'#EXTINF:-1 tvg-logo="{logo}" group-title="{group}",{name}\n{url}\n'
+        f.write(extinf)
 
-    print(f"\n✅ {len(verified)} stream çalışıyor. Dosyaya yazılıyor...")
-    save_verified_m3u(verified)
-    print("📁 playlist_verified.m3u dosyası oluşturuldu.")
-
-if __name__ == "__main__":
-    main()
+print("✅ playlist.m3u dosyası oluşturuldu.")
