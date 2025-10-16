@@ -15,7 +15,7 @@ logos = requests.get(LOGOS_URL).json()
 blocklist = requests.get(BLOCKLIST_URL).json()
 
 # Blocklist'e giren kanalları filtrele
-blocked_channels = set(blocklist)
+blocked_channels = set(entry["channel"] for entry in blocklist)
 
 # Kanal ID → kanal adı eşlemesi
 channel_map = {c["id"]: c for c in channels}
