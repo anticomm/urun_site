@@ -33,6 +33,7 @@ jobs:
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
         git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/anticomm/urun_site.git
+        git remote -v  # 🔍 Bu satır loglarda hangi URL kullanıldığını gösterecek
         git add playlist_verified.m3u
         git commit -m "✅ Otomatik verified playlist güncellendi"
         git push origin main
