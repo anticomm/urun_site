@@ -67,7 +67,8 @@ body {
 
 /* Sağdaki görsel */
 .sag img {
-  max-width: 600px;
+  width: 100%;
+  max-width: 500px;
   height: auto;
 }
 
