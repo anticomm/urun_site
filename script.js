@@ -1,4 +1,4 @@
-fetch('veriler/amazon.json')
+fetch('veriler/urunler.json')
   .then(res => res.json())
   .then(data => {
     const container = document.getElementById('urunler');
