@@ -1,30 +1,76 @@
 body {
   font-family: Arial, sans-serif;
-  text-align: center;
-  padding: 20px;
-  background-color: #f9f9f9;
-}
-h1, h2 {
+  background-image: url('https://copilot.microsoft.com/th/id/BCO.f29d2c83-904c-4e60-8fdd-a52ba9463d14.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #333;
+  padding: 20px;
+  text-align: center;
 }
-ul {
-  list-style: none;
-  padding: 0;
+
+h1 {
+  color: #ff6600;
+  font-size: 32px;
 }
-li {
-  margin: 10px 0;
-}
-a {
-  text-decoration: none;
+
+.telegram-btn {
+  background-color: #ff6600;
   color: white;
-  background-color: #0077cc;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
   display: inline-block;
+  margin-top: 15px;
 }
+
+.telegram-btn:hover {
+  background-color: #e65c00;
+}
+
+.urunler-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+  padding: 0 10px;
+}
+
 .urun {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 15px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 15px;
+  text-align: left;
+  transition: transform 0.2s ease;
+}
+
+.urun:hover {
+  transform: translateY(-5px);
+}
+
+.urun img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.urun h3 {
+  font-size: 18px;
+  margin: 0 0 5px;
+}
+
+.urun p {
+  color: #666;
+  margin: 0 0 10px;
+}
+
+.urun a {
+  background-color: #0077cc;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
 }
