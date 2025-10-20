@@ -1,0 +1,47 @@
+name: Validate M3U Streams
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Her 6 saatte bir çalışır
+  workflow_dispatch:        # Manuel tetikleme
+
+jobs:
+  validate-streams:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        persist-credentials: false
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run M3U validator
+      run: |
+        python fetch_and_parse_m3u.py
+
+    - name: Commit and push verified playlist
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/anticomm/urun_site.git"
+        git remote -v  # 🔍 Bu satır loglarda hangi URL kullanıldığını gösterecek
+        git add playlist_verified.m3u
+        git commit -m "✅ Otomatik verified playlist güncellendi"
+        git push origin main
+
+    - name: Upload logs
+      uses: actions/upload-artifact@v4
+      with:
+        name: stream-logs
+        path: logs/
