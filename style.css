@@ -77,7 +77,10 @@ body {
     flex-direction: column;
     text-align: center;
   }
-
+.sag img {
+  max-width: 300px;
+  height: auto;
+}
   .sol, .sag {
     max-width: 100%;
   }
