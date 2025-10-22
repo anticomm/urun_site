@@ -335,6 +335,8 @@ https://5db313b643fd8.streamlock.net/111/111/playlist.m3u8
 https://123tv-mx1.flex-cdn.net/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/N0ymZfDW/247boxtv.png" group-title="IR",247 Box TV
 https://hls.247box.live/hls/stream.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/4hDCB1M.png" group-title="AR",24/7 Canal de Noticias
+https://panel.host-live.com:19360/cn247tv/cn247tv.m3u8
 #EXTINF:-1 tvg-logo="https://i.ibb.co/3m9LrLj/k7gIibH.png" group-title="KG",312 Кино
 http://176.126.166.43:1935/live/312kino/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.ibb.co/S6sZvqk/iLSGi6c.png" group-title="KG",312 ТВ
@@ -5868,7 +5870,7 @@ http://116.90.120.149:8000/play/a0bx/index.m3u8
 #EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/3d/2022_Disney_Channel_logo.svg" group-title="PL",Disney Channel
 http://185.236.229.62:9981/play/a07d
 #EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/3d/2022_Disney_Channel_logo.svg" group-title="US",Disney Channel
-https://e5.thetvapp.to/hls/DisneyChannelEast/tracks-v2a1/mono.m3u8
+https://e5.thetvapp.to/hls/DisneyChannelEast/index.m3u8
 #EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/3d/2022_Disney_Channel_logo.svg" group-title="US",Disney Channel East
 https://fl41.moveonjoy.com/DISNEY/index.m3u8
 #EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/3d/2022_Disney_Channel_logo.svg" group-title="US",Disney Channel East
@@ -22608,7 +22610,7 @@ https://livetv-fa.tubi.video/wjbk/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/Q4B9h5L.png" group-title="US",ABC 22 Savannah GA (WJCL)
 https://livetv-fa.tubi.video/wjcl/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/MfLl1HS.png" group-title="US",WJLP-DT1
-https://e5.thetvapp.to/hls/metv-wjlp-new-jerseynew-york/tracks-v2a1/mono.m3u8
+https://e5.thetvapp.to/hls/metv-wjlp-new-jerseynew-york/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/mrWo0P1.png" group-title="US",WJXT News4JAX (Jacksonville FL)
 https://dai.google.com/linear/hls/event/RDmbn03GRCOLNG1eetEKhg/master.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/DVASpQj.png" group-title="PR",WKAQ-DT1 (Telemundo PR)
@@ -23416,11 +23418,11 @@ https://stream8.cinerama.uz/1016/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/AmW9d6H.jpg" group-title="GR",Zougla TV
 https://zouglacam-mdc-secure.akamaized.net/zouglalive/main/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/JPNPH3x.png" group-title="BO",ZoyTV Plus
-https://ssh101stream.ssh101.com/akamaissh101/ssh101/zoytv/playlist.m3u8
+https://mio.zoymilton.com/ZoyPlus/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/0YHztGq.png" group-title="BO",Zoy TV Sports 1
 https://ssh101stream.ssh101.com/akamaissh101/ssh101/zoytvsports/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/0YHztGq.png" group-title="BO",Zoy TV Turcas
-https://ssh101stream.ssh101.com/akamaissh101/ssh101/zoytvturcas/playlist.m3u8
+https://mio.zoymilton.com/ZoyTurcas/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/7F4jQ13.png" group-title="DO",ZTV
 https://lb00zdigital.streamprolive.com/mnt/hls/live.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/wPqCtwR.png" group-title="HU",Zuglo TV
