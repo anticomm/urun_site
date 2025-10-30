@@ -21549,8 +21549,6 @@ https://ott-balancer.tvri.go.id/live/eds/Sumbar/hls/Sumbar.m3u8
 https://ott-balancer.tvri.go.id/live/eds/Jogjakarta/hls/Jogjakarta.m3u8
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/KjGC35TS/tvriasi.png" group-title="RO",TVR Iasi
 https://tvr-tvriasi.cdn.zitec.com/live/tvriasi/main.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/mlrd5ia.png" group-title="NL",RTV Rijnmond Extra
-http://dcur8bjarl5c2.cloudfront.net/live/rijnmond/tv-extra/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/NFdS6r8y/tvrinfo.png" group-title="RO",TVR Info
 https://tvr-tvrinfo.cdn.zitec.com/live/tvrinfo/main.m3u8
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/NGD3qWhg/tvrinternational.png" group-title="RO",TVR International
@@ -21807,8 +21805,6 @@ https://stmv1.srvif.com/tvvitoriamz/tvvitoriamz/playlist.m3u8
 https://tvwarehouse.r.worldssl.net/mystream.m3u8
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/L55NMQfX/tvwarehouse.png" group-title="UK",TV Warehouse
 http://92.114.85.72:8000/play/a09i
-#EXTINF:-1 tvg-logo="https://i.imgur.com/5IDb9fk.png" group-title="NL",Omroep West
-https://d1axml5ozykh3g.cloudfront.net/live/omroepwest/tv/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/EiJzkIz.png" group-title="UG",TV West
 https://stream.hydeinnovations.com/tvwest-flussonic/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/EiJzkIz.png" group-title="UG",TV West
