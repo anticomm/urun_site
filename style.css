@@ -199,6 +199,19 @@ body {
   .navbar li {
     flex: 1 1 auto;
     min-width: 80px;
+<<<<<<< HEAD
+=======
+  }
+
+  .navbar a,
+  .kategori-baslik {
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+
+  .kategori-listesi {
+    width: 180px;
+>>>>>>> f897d531b5ac2cdd31cb592d8be793032f86daab
   }
 
   .navbar a,
