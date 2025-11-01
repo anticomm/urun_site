@@ -1,93 +1,213 @@
+/* Genel yapı */
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fff;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
   color: #333;
 }
 
-/* Menü */
+/* Navigasyon */
 .navbar {
-  background-color: #f8f8f8;
-  padding: 10px 40px;
-  border-bottom: 1px solid #ddd;
+  background-color: #ff6600;
+  padding: 15px;
 }
 
 .navbar ul {
   list-style: none;
-  display: flex;
-  gap: 30px;
   margin: 0;
-  padding: 0;
+  padding: 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
-.navbar li a {
+.navbar li {
+  display: flex;
+  align-items: center;
+}
+
+.navbar a,
+.kategori-baslik {
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Kategori açılır kutusu */
+.kategori-listesi {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 220px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.kategori-listesi li {
+  border-top: 1px solid #eee;
+}
+
+.kategori-listesi a {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
   text-decoration: none;
   color: #333;
-  font-weight: bold;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.kategori-listesi a:hover {
+  background-color: #f9f9f9;
+}
+
+.icon {
+  margin-right: 10px;
+  font-size: 18px;
 }
 
 /* Ana içerik */
 .hero {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
-  padding: 60px;
+  padding: 40px;
 }
 
 .sol {
-  max-width: 50%;
+  flex: 1;
+  min-width: 300px;
+}
+
+.sag {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
 }
 
 .baslik {
   font-size: 32px;
-  color: #ff6600;
   margin-bottom: 20px;
 }
 
 .alt-mesaj {
   font-size: 18px;
-  color: #ff6600;
   margin-bottom: 20px;
 }
 
 .telegram-btn {
-  padding: 12px 24px;
+  display: inline-block;
+  background-color: #28a745;
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* Görsel */
+.sag img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Footer */
+.footer {
+  background-color: #f9f9f9;
+  padding: 30px;
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+  text-align: center;
+}
+
+.footer h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+/* Telif yazısı */
+.copyright {
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+  padding: 15px 0;
+  background-color: #f2f2f2;
+  border-top: 1px solid #ddd;
+}
+
+/* Kategori kutusu */
+.kategori-menu {
+  width: 250px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  margin: 20px 0;
+}
+
+.kategori-baslik {
   background-color: #ff6600;
   color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 18px;
-  text-decoration: none;
-  display: inline-block;
+  padding: 12px 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
-.telegram-btn:hover {
-  background-color: #e65c00;
-}
-
-/* Sağdaki görsel */
-.sag img {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
+.yeni-etiket {
+  background-color: white;
+  color: #ff6600;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-weight: bold;
 }
 
 /* Mobil uyum */
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-  }
-.sag img {
-  max-width: 300px;
-  height: auto;
-}
-  .sol, .sag {
-    max-width: 100%;
+@media (max-width: 480px) {
+  .navbar ul {
+    gap: 10px;
+    padding: 0 5px;
   }
 
-  .navbar ul {
-    flex-direction: column;
-    gap: 10px;
+  .navbar li {
+    flex: 1 1 auto;
+    min-width: 80px;
+  }
+
+  .navbar a,
+  .kategori-baslik {
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+
+  .kategori-listesi {
+    width: 180px;
   }
 }
