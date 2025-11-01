@@ -1,3 +1,4 @@
+
 fetch('veriler/urunler.json')
   .then(res => res.json())
   .then(data => {

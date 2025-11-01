@@ -1,20 +1,203 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ürün Takipçisi</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>İndirim Sinyali</title>
+  <style>
+    /* Genel yapı */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    /* Navigasyon */
+    .navbar {
+      background-color: #ff6600;
+      padding: 15px;
+    }
+
+    .navbar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .navbar li {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar a,
+    .kategori-baslik {
+      font-size: 16px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      display: block;
+      cursor: pointer;
+    }
+
+    /* Kategori açılır kutusu */
+    .kategori-listesi {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 220px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+    }
+
+    .kategori-listesi li {
+      border-top: 1px solid #eee;
+    }
+
+    .kategori-listesi a {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .kategori-listesi a:hover {
+      background-color: #f9f9f9;
+    }
+
+    .icon {
+      margin-right: 10px;
+      font-size: 18px;
+    }
+
+    /* Ana içerik */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 40px;
+    }
+
+    .sol {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .sag {
+      flex: 1;
+      min-width: 300px;
+      text-align: center;
+    }
+
+    .baslik {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .alt-mesaj {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .telegram-btn {
+      display: inline-block;
+      background-color: #28a745;
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .sag img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #f9f9f9;
+      padding: 30px;
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #333;
+      text-align: center;
+    }
+
+    .footer h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .footer a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+
+    .copyright {
+      text-align: center;
+      font-size: 13px;
+      color: #666;
+      padding: 15px 0;
+      background-color: #f2f2f2;
+      border-top: 1px solid #ddd;
+    }
+
+    /* Mobil uyum */
+    @media (max-width: 480px) {
+      .navbar ul {
+        gap: 8px;
+        padding: 0 5px;
+      }
+
+      .navbar a,
+      .kategori-baslik {
+        font-size: 14px;
+        padding: 6px 8px;
+      }
+
+      .kategori-listesi {
+        width: 180px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="navbar">
     <nav>
       <ul>
-        <li><a href="#">Anasayfa</a></li>
-        <li><a href="#">Ürünler</a></li>
-        <li><a href="#">Hakkımızda</a></li>
-        <li><a href="#">İletişim</a></li>
-        <li><a href="#">Kategoriler</a></li>
+        <li><a href="/">Anasayfa</a></li>
+        <li>
+          <div class="kategori-baslik" onclick="toggleKategoriler()">Kategoriler</div>
+          <ul class="kategori-listesi" id="kategoriListesi">
+            <li><a href="/Elektronik"><span class="icon">💻</span> Elektronik</a></li>
+            <li><a href="/Giyim"><span class="icon">👕</span> Giyim</a></li>
+          </ul>
+        </li>
+        <li><a href="#hakkimizda">Hakkımızda</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
       </ul>
     </nav>
   </header>
@@ -23,15 +206,50 @@
     <div class="sol">
       <h1 class="baslik">Ücretsiz bir fiyat takipçisi</h1>
       <p class="alt-mesaj">
-        Amazon’daki indirimli ürünleri takip edin. Fiyatlar düştüğünde Telegram kanalımızdan haberdar olun.
+        İndirimli ürünleri takip edin. Fiyatlar düştüğünde Telegram kanalımızdan haberdar olun.
       </p>
       <a href="https://t.me/amazonindirimler1" class="telegram-btn" target="_blank">
         Telegram’a Katıl
       </a>
     </div>
     <div class="sag">
-      <img src="img/gorsel.png" alt="Alışveriş Görseli">
+      <img src="img/gorsel.png" alt="Alışveriş Görseli" />
     </div>
   </main>
+
+  <footer class="footer">
+    <section id="hakkimizda">
+      <h2>Hakkımızda</h2>
+      <p>
+        İndirim Sinyali, indirimli ürünleri anlık olarak takip eden bir bildirim sistemidir.
+        Ürün sayfaları otomatik olarak güncellenir ve her kategori için ayrı bağlantılar sunar.
+        Telegram kanalımız üzerinden en güncel fırsatları doğrudan alabilir, ürün detaylarına tek tıkla ulaşabilirsiniz.
+        Sistemimiz tamamen ücretsizdir ve kullanıcı odaklıdır.
+      </p>
+    </section>
+
+    <section id="iletisim">
+      <h2>İletişim</h2>
+      <p>
+        Telegram kanalımız: <a href="https://t.me/amazonindirimler1" target="_blank">@amazonindirimler1</a><br />
+        E-posta: <a href="mailto:destek@indirimsinyali.com">destek@indirimsinyali.com</a>
+      </p>
+    </section>
+  </footer>
+
+  <div class="copyright">
+    © 2025 İndirimsinyali - Tüm hakları saklıdır.
+  </div>
+
+  <script>
+    function toggleKategoriler() {
+      const liste = document.getElementById("kategoriListesi");
+      liste.style.display = (liste.style.display === "block") ? "none" : "block";
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("kategoriListesi").style.display = "none";
+    });
+  </script>
 </body>
 </html>
